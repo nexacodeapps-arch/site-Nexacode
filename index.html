@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NexaCode — Soluções digitais sob medida</title>
+    <meta
+      name="description"
+      content="A NexaCode cria sites, apps e sistemas sob medida para empresas locais e PMEs. Solicite um orçamento."
+    />
+
+    <style>
+      :root {
+        --bg: #060a14;
+        --surface: #0b1224;
+        --card: #0e1730;
+        --stroke: rgba(255, 255, 255, 0.1);
+        --text: #eef4ff;
+        --muted: #a7b3ca;
+        --blue: #1f6bff;
+        --blue2: #3a8cff;
+        --white: #ffffff;
+        --shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
+        --radius: 18px;
+        --radius2: 22px;
+        --max: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Arial;
+        background: radial-gradient(
+            1200px 650px at 18% -10%,
+            rgba(31, 107, 255, 0.2),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 550px at 85% 0%,
+            rgba(58, 140, 255, 0.12),
+            transparent 60%
+          ),
+          linear-gradient(180deg, #050814, #060a14 40%, #050814);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      .container {
+        width: min(calc(var(--max) + 40px), 100%);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ===== Header ===== */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(6, 10, 20, 0.72);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 14px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 180px;
+      }
+      .mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        background: radial-gradient(
+            14px 14px at 30% 30%,
+            rgba(255, 255, 255, 0.35),
+            transparent 60%
+          ),
+          linear-gradient(135deg, var(--blue), #59a0ff);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+        position: relative;
+        overflow: hidden;
+      }
+      .mark:after {
+        content: "";
+        position: absolute;
+        inset: -20px;
+        background: radial-gradient(
+          140px 80px at 40% 40%,
+          rgba(255, 255, 255, 0.14),
+          transparent 55%
+        );
+        transform: rotate(15deg);
+        opacity: 0.9;
+      }
+      .brand b {
+        font-size: 18px;
+        letter-spacing: 0.2px;
+      }
+      .brand small {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 2px;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .navlinks {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .link {
+        color: rgba(238, 244, 255, 0.9);
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        transition: 0.18s ease;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .link:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .btn {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        padding: 10px 14px;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: 0.18s transform ease, 0.18s background ease,
+          0.18s border ease;
+        font-weight: 700;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+      .btn.primary {
+        border: 0;
+        background: linear-gradient(135deg, var(--blue), var(--blue2));
+        box-shadow: 0 14px 34px rgba(31, 107, 255, 0.24);
+      }
+
+      /* Mobile menu */
+      .burger {
+        display: none;
+        width: 44px;
+        height: 42px;
+        border-radius: 14px;
+      }
+      .burger span {
+        width: 18px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.85);
+        display: block;
+        border-radius: 999px;
+        position: relative;
+      }
+      .burger span:before,
+      .burger span:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 18px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 999px;
+      }
+      .burger span:before {
+        top: -6px;
+      }
+      .burger span:after {
+        top: 6px;
+      }
+
+      .drawer {
+        display: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 12px 0 16px;
+      }
+      .drawer .navlinks {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .drawer .link,
+      .drawer .btn {
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      /* ===== Hero ===== */
+      .hero {
+        padding: 22px 0 12px;
+      }
+      .hero-card {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius2);
+        background: radial-gradient(
+            900px 400px at 70% 40%,
+            rgba(31, 107, 255, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            800px 350px at 90% 10%,
+            rgba(58, 140, 255, 0.18),
+            transparent 60%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.07),
+            rgba(255, 255, 255, 0.03)
+          );
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.12fr 0.88fr;
+        gap: 10px;
+        padding: 26px;
+        align-items: center;
+        position: relative;
+      }
+      .hero-inner:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            1200px 500px at 10% 10%,
+            rgba(255, 255, 255, 0.08),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 350px at 90% 20%,
+            rgba(255, 255, 255, 0.06),
+            transparent 60%
+          );
+        pointer-events: none;
+        opacity: 0.7;
+      }
+      .hero-left,
+      .hero-right {
+        position: relative;
+      }
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted);
+        font-size: 13px;
+        backdrop-filter: blur(12px);
+      }
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: var(--blue2);
+        box-shadow: 0 0 0 6px rgba(58, 140, 255, 0.16);
+      }
+      .hero h1 {
+        margin: 12px 0 10px;
+        font-size: 44px;
+        line-height: 1.05;
+        letter-spacing: -0.8px;
+      }
+      .hero p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        max-width: 62ch;
+        line-height: 1.5;
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .ghost {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .hero-right {
+        display: grid;
+        place-items: center;
+        padding: 10px 0;
+      }
+      .mock {
+        width: min(520px, 100%);
+        aspect-ratio: 16/10;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.05)
+          ),
+          radial-gradient(
+            120px 90px at 20% 30%,
+            rgba(31, 107, 255, 0.35),
+            transparent 60%
+          ),
+          radial-gradient(
+            120px 90px at 60% 20%,
+            rgba(58, 140, 255, 0.28),
+            transparent 60%
+          ),
+          radial-gradient(
+            120px 90px at 80% 60%,
+            rgba(31, 107, 255, 0.22),
+            transparent 60%
+          ),
+          linear-gradient(135deg, rgba(11, 18, 36, 0.8), rgba(6, 10, 20, 0.8));
+        box-shadow: 0 22px 70px rgba(0, 0, 0, 0.55);
+        position: relative;
+        overflow: hidden;
+      }
+      .mock:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          700px 220px at 50% 0%,
+          rgba(255, 255, 255, 0.1),
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+      .ui {
+        position: absolute;
+        inset: 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(6, 10, 20, 0.45);
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 36px 1fr;
+        overflow: hidden;
+      }
+      .ui-top {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 12px;
+        color: rgba(238, 244, 255, 0.85);
+        font-size: 12px;
+      }
+      .ui-dots {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+      .ui-dots i {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.2);
+        display: block;
+      }
+      .ui-body {
+        padding: 12px;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 12px;
+        align-items: stretch;
+      }
+      .pane {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        padding: 10px;
+      }
+      .bar {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        margin-bottom: 10px;
+      }
+      .bars {
+        display: grid;
+        gap: 8px;
+      }
+      .bars .bar:nth-child(2) {
+        width: 80%;
+      }
+      .bars .bar:nth-child(3) {
+        width: 60%;
+      }
+      .chart {
+        height: 100%;
+        background: radial-gradient(
+            200px 120px at 40% 40%,
+            rgba(31, 107, 255, 0.3),
+            transparent 60%
+          ),
+          radial-gradient(
+            200px 120px at 70% 60%,
+            rgba(58, 140, 255, 0.22),
+            transparent 60%
+          );
+      }
+
+      /* ===== Sections ===== */
+      section {
+        scroll-margin-top: 86px;
+      }
+      .section {
+        padding: 18px 0 26px;
+      }
+      .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 12px 0 14px;
+      }
+      .section-title h2 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: 0.2px;
+      }
+      .section-title p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        max-width: 70ch;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+      }
+      .card {
+        grid-column: span 3;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(14, 23, 48, 0.6);
+        border-radius: var(--radius);
+        box-shadow: 0 14px 45px rgba(0, 0, 0, 0.35);
+        padding: 16px;
+        position: relative;
+        overflow: hidden;
+        transition: 0.18s transform ease, 0.18s border ease,
+          0.18s background ease;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.16);
+        background: rgba(14, 23, 48, 0.72);
+      }
+      .icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        background: rgba(31, 107, 255, 0.16);
+        border: 1px solid rgba(31, 107, 255, 0.28);
+        margin-bottom: 12px;
+        font-size: 20px;
+      }
+      .card h3 {
+        margin: 0 0 6px;
+        font-size: 15px;
+      }
+      .card p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+      .card .card-cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: auto;
+      }
+      .mini {
+        padding: 9px 12px;
+        border-radius: 12px;
+        font-size: 13px;
+      }
+
+      /* Why section */
+      .why {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius2);
+        background: rgba(11, 18, 36, 0.55);
+        box-shadow: var(--shadow);
+        padding: 18px;
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .why-card {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: var(--radius);
+        padding: 16px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .why-card b {
+        display: block;
+        margin: 0 0 4px;
+      }
+      .why-card span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+      .why-ico {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: rgba(58, 140, 255, 0.14);
+        border: 1px solid rgba(58, 140, 255, 0.3);
+      }
+
+      /* CTA strip */
+      .cta {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius2);
+        background: radial-gradient(
+            900px 320px at 15% 10%,
+            rgba(31, 107, 255, 0.22),
+            transparent 60%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.03)
+          );
+        box-shadow: var(--shadow);
+        padding: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .cta h2 {
+        margin: 0;
+        font-size: 18px;
+      }
+      .cta p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      /* ===== Orçamento ===== */
+      .quote-wrap {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 14px;
+        align-items: stretch;
+      }
+      .form {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(14, 23, 48, 0.55);
+        border-radius: var(--radius2);
+        box-shadow: var(--shadow);
+        padding: 18px;
+      }
+      .form h2 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+      .form p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+      label {
+        font-size: 12px;
+        color: rgba(238, 244, 255, 0.85);
+        font-weight: 700;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        outline: none;
+        transition: 0.15s border ease, 0.15s background ease;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: rgba(58, 140, 255, 0.55);
+        background: rgba(31, 107, 255, 0.08);
+      }
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      .aside {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(11, 18, 36, 0.55);
+        border-radius: var(--radius2);
+        box-shadow: var(--shadow);
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+      .aside:before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: radial-gradient(
+          600px 260px at 70% 10%,
+          rgba(31, 107, 255, 0.2),
+          transparent 60%
+        );
+        opacity: 0.9;
+        pointer-events: none;
+      }
+      .aside > * {
+        position: relative;
+      }
+      .aside h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+      .aside p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .list {
+        margin: 14px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+      .li {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 16px;
+        padding: 12px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .li i {
+        width: 30px;
+        height: 30px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: rgba(31, 107, 255, 0.14);
+        border: 1px solid rgba(31, 107, 255, 0.28);
+        font-style: normal;
+      }
+      .li b {
+        display: block;
+        font-size: 13px;
+        margin: 0 0 2px;
+      }
+      .li span {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      /* ===== Footer ===== */
+      footer {
+        margin-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--muted);
+        padding: 20px 0 40px;
+      }
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .foot a {
+        color: rgba(167, 179, 202, 0.95);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      /* ===== Responsive ===== */
+      @media (max-width: 980px) {
+        .hero-inner {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 38px;
+        }
+        .ui-body {
+          grid-template-columns: 1fr;
+        }
+        .card {
+          grid-column: span 6;
+        }
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+        .quote-wrap {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 720px) {
+        .navlinks {
+          display: none;
+        }
+        .burger {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .drawer {
+          display: none;
+        }
+        .drawer.open {
+          display: block;
+        }
+      }
+      @media (max-width: 560px) {
+        .card {
+          grid-column: span 12;
+        }
+        .hero-inner {
+          padding: 18px;
+        }
+        .fields {
+          grid-template-columns: 1fr;
+        }
+        .brand {
+          min-width: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="topbar">
+          <a class="brand" href="#home" aria-label="Ir para a Home">
+            <span class="mark" aria-hidden="true"></span>
+            <span>
+              <b>NexaCode</b>
+              <small>Tech para empresas locais</small>
+            </span>
+          </a>
+
+          <nav aria-label="Menu principal">
+            <div class="navlinks" id="navLinks">
+              <a class="link" href="#home">Home</a>
+              <a class="link" href="#servicos">Serviços</a>
+              <a class="link" href="#sobre">Sobre</a>
+              <a class="link" href="#contato">Contato</a>
+            </div>
+
+            <a class="btn primary" href="#orcamento">Orçamento</a>
+
+            <button
+              class="btn burger"
+              id="burger"
+              type="button"
+              aria-label="Abrir menu"
+            >
+              <span></span>
+            </button>
+          </nav>
+        </div>
+
+        <div class="drawer" id="drawer">
+          <div class="navlinks">
+            <a class="link" href="#home">Home</a>
+            <a class="link" href="#servicos">Serviços</a>
+            <a class="link" href="#sobre">Sobre</a>
+            <a class="link" href="#contato">Contato</a>
+            <a class="btn primary" href="#orcamento">Orçamento</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== HERO / HOME ===== -->
+      <section class="hero" id="home">
+        <div class="container">
+          <div class="hero-card">
+            <div class="hero-inner">
+              <div class="hero-left">
+                <span class="kicker"
+                  ><span class="dot"></span> Soluções digitais para PMEs e
+                  negócios locais</span
+                >
+                <h1>
+                  Soluções digitais<br />sob medida para<br />o seu negócio
+                </h1>
+                <p>
+                  Desenvolvemos <b>sites</b>, <b>apps</b> e
+                  <b>sistemas</b> personalizados para empresas que querem vender
+                  mais, organizar processos e crescer com tecnologia.
+                </p>
+
+                <div class="hero-actions">
+                  <a class="btn primary" href="#orcamento"
+                    >Solicitar orçamento</a
+                  >
+                  <a class="btn ghost" href="#servicos">Ver serviços</a>
+                </div>
+              </div>
+
+              <div class="hero-right" aria-label="Mock de painel e app">
+                <!-- mock visual (sem depender de imagem externa) -->
+                <div class="mock" aria-hidden="true">
+                  <div class="ui">
+                    <div class="ui-top">
+                      <div class="ui-dots"><i></i><i></i><i></i></div>
+                      <div>Dashboard • NexaCode</div>
+                    </div>
+                    <div class="ui-body">
+                      <div class="pane">
+                        <div class="bars">
+                          <div class="bar"></div>
+                          <div class="bar"></div>
+                          <div class="bar"></div>
+                        </div>
+                        <div style="height: 14px"></div>
+                        <div class="pane chart"></div>
+                      </div>
+                      <div class="pane">
+                        <div class="bar"></div>
+                        <div class="bars">
+                          <div class="bar" style="width: 90%"></div>
+                          <div class="bar" style="width: 72%"></div>
+                          <div class="bar" style="width: 52%"></div>
+                        </div>
+                        <div style="height: 12px"></div>
+                        <div class="pane" style="height: 96px"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="height: 10px"></div>
+                <div style="color: var(--muted); font-size: 12px">
+                  Design responsivo (desktop + mobile) • Performance e SEO
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SERVIÇOS ===== -->
+      <section class="section" id="servicos">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <h2>Seus serviços</h2>
+              <p>
+                Escolha o que você precisa agora. A NexaCode monta o pacote
+                ideal e entrega com suporte.
+              </p>
+            </div>
+            <a class="btn primary" href="#orcamento">Orçamento</a>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="icon">🖥️</div>
+              <h3>Criação de Sites</h3>
+              <p>
+                Sites institucionais e landing pages com foco em conversão, SEO
+                e velocidade.
+              </p>
+              <div class="card-cta">
+                <span style="color: var(--muted); font-size: 12px"
+                  >Ideal para: vendas</span
+                >
+                <a class="btn mini" href="#orcamento">Saiba mais</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="icon">📱</div>
+              <h3>Desenvolvimento de Apps</h3>
+              <p>
+                Apps Android/iOS sob medida (Flutter). Login, painel,
+                notificações e integrações.
+              </p>
+              <div class="card-cta">
+                <span style="color: var(--muted); font-size: 12px"
+                  >Ideal para: clientes</span
+                >
+                <a class="btn mini" href="#orcamento">Saiba mais</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="icon">⚙️</div>
+              <h3>Sistemas Personalizados</h3>
+              <p>
+                Dashboards, CRM, controle de pedidos, financeiro e automações
+                internas.
+              </p>
+              <div class="card-cta">
+                <span style="color: var(--muted); font-size: 12px"
+                  >Ideal para: gestão</span
+                >
+                <a class="btn mini" href="#orcamento">Saiba mais</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="icon">🤖</div>
+              <h3>Automação e IA</h3>
+              <p>
+                Integre WhatsApp, formulários, planilhas, e rotinas automáticas
+                para reduzir trabalho manual.
+              </p>
+              <div class="card-cta">
+                <span style="color: var(--muted); font-size: 12px"
+                  >Ideal para: escala</span
+                >
+                <a class="btn mini" href="#orcamento">Saiba mais</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SOBRE / POR QUE ===== -->
+      <section class="section" id="sobre">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <h2>Por que escolher a NexaCode?</h2>
+              <p>
+                Processo simples, entrega rápida e solução pensada para o que o
+                seu negócio realmente precisa.
+              </p>
+            </div>
+          </div>
+
+          <div class="why">
+            <div class="why-grid">
+              <div class="why-card">
+                <div class="why-ico">⚡</div>
+                <div>
+                  <b>Atendimento rápido</b>
+                  <span
+                    >Você fala direto com quem constrói. Sem enrolação e com
+                    prazos claros.</span
+                  >
+                </div>
+              </div>
+
+              <div class="why-card">
+                <div class="why-ico">🎯</div>
+                <div>
+                  <b>Soluções sob medida</b>
+                  <span
+                    >Projeto alinhado ao seu objetivo: mais clientes, mais
+                    organização e mais lucro.</span
+                  >
+                </div>
+              </div>
+
+              <div class="why-card">
+                <div class="why-ico">🔒</div>
+                <div>
+                  <b>Qualidade e segurança</b>
+                  <span
+                    >Boas práticas, performance e proteção básica contra falhas
+                    comuns.</span
+                  >
+                </div>
+              </div>
+
+              <div class="why-card">
+                <div class="why-ico">📈</div>
+                <div>
+                  <b>Pronto para crescer</b>
+                  <span
+                    >Estrutura escalável para você evoluir o projeto com o
+                    tempo.</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div style="height: 14px"></div>
+
+            <div class="cta">
+              <div>
+                <h2>Deseja transformar sua ideia em realidade?</h2>
+                <p>
+                  Peça um orçamento e receba uma proposta clara, com etapas e
+                  valor.
+                </p>
+              </div>
+              <a class="btn primary" href="#orcamento">Solicitar orçamento</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTATO (section pequena) ===== -->
+      <section class="section" id="contato">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <h2>Contato</h2>
+              <p>
+                Responda o formulário de orçamento ou fale direto no
+                WhatsApp/Email (ajuste com seus dados).
+              </p>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="card" style="grid-column: span 6">
+              <div class="icon">💬</div>
+              <h3>WhatsApp</h3>
+              <p>Atendimento rápido para empresas locais e PMEs.</p>
+              <a
+                class="btn primary"
+                target="_blank"
+                rel="noopener"
+                href="https://wa.me/5599999999999?text=Oi!%20Quero%20um%20or%C3%A7amento%20com%20a%20NexaCode."
+              >
+                Falar no WhatsApp
+              </a>
+              <div style="height: 8px"></div>
+              <div style="color: var(--muted); font-size: 12px">
+                Troque o número no link acima.
+              </div>
+            </div>
+
+            <div class="card" style="grid-column: span 6">
+              <div class="icon">✉️</div>
+              <h3>E-mail</h3>
+              <p>
+                Envie detalhes do projeto: objetivo, prazo, referências e
+                orçamento estimado.
+              </p>
+              <a class="btn" href="mailto:contato@nexacode.com.br"
+                >contato@nexacode.com.br</a
+              >
+              <div style="height: 8px"></div>
+              <div style="color: var(--muted); font-size: 12px">
+                Troque para seu e-mail real.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ORÇAMENTO ===== -->
+      <section class="section" id="orcamento">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <h2>Solicite seu orçamento</h2>
+              <p>
+                Preencha os dados e envie. Você também pode enviar pelo WhatsApp
+                (gera mensagem automática).
+              </p>
+            </div>
+          </div>
+
+          <div class="quote-wrap">
+            <form class="form" id="quoteForm">
+              <h2>Formulário de orçamento</h2>
+              <p>Quanto mais detalhes, mais precisa fica a proposta.</p>
+
+              <div class="fields">
+                <div class="field">
+                  <label for="name">Nome</label>
+                  <input
+                    id="name"
+                    name="name"
+                    placeholder="Seu nome"
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="company">Empresa (opcional)</label>
+                  <input
+                    id="company"
+                    name="company"
+                    placeholder="Nome da empresa"
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="whats">WhatsApp</label>
+                  <input
+                    id="whats"
+                    name="whats"
+                    placeholder="(xx) 9xxxx-xxxx"
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="email">E-mail</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="seuemail@dominio.com"
+                    required
+                  />
+                </div>
+
+                <div class="field full">
+                  <label for="service">Tipo de serviço</label>
+                  <select id="service" name="service" required>
+                    <option value="" selected disabled>Selecione…</option>
+                    <option>Site (institucional/landing page)</option>
+                    <option>Aplicativo (Android/iOS)</option>
+                    <option>Sistema Web (dashboard/CRM/gestão)</option>
+                    <option>Automação / Integrações / IA</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+
+                <div class="field full">
+                  <label for="details">Descrição do projeto</label>
+                  <textarea
+                    id="details"
+                    name="details"
+                    placeholder="Explique o que você precisa, objetivo do projeto, prazo e referências…"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                  margin-top: 14px;
+                "
+              >
+                <button class="btn primary" type="submit">
+                  Enviar orçamento
+                </button>
+                <button class="btn" id="sendWhats" type="button">
+                  Enviar no WhatsApp
+                </button>
+              </div>
+
+              <div
+                style="margin-top: 10px; color: var(--muted); font-size: 12px"
+              >
+                Ao enviar, você concorda em ser contatado pela NexaCode para
+                retorno do orçamento.
+              </div>
+            </form>
+
+            <aside class="aside" aria-label="Informações de orçamento">
+              <h3>Como funciona</h3>
+              <p>
+                Em poucas perguntas, entendemos seu cenário e enviamos uma
+                proposta objetiva. Ideal para empresas locais e pequenas/médias
+                que querem resultado.
+              </p>
+
+              <div class="list">
+                <div class="li">
+                  <i>1</i>
+                  <div>
+                    <b>Você descreve a necessidade</b>
+                    <span>Objetivo, público e funcionalidades.</span>
+                  </div>
+                </div>
+                <div class="li">
+                  <i>2</i>
+                  <div>
+                    <b>A NexaCode analisa</b>
+                    <span>Melhor caminho técnico e estimativa.</span>
+                  </div>
+                </div>
+                <div class="li">
+                  <i>3</i>
+                  <div>
+                    <b>Você recebe a proposta</b>
+                    <span>Etapas, prazo e valor bem explicados.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="height: 14px"></div>
+              <a
+                class="btn primary"
+                target="_blank"
+                rel="noopener"
+                href="https://wa.me/5599999999999?text=Oi!%20Quero%20um%20or%C3%A7amento%20com%20a%20NexaCode."
+              >
+                Falar direto no WhatsApp
+              </a>
+              <div style="height: 8px"></div>
+              <div style="color: var(--muted); font-size: 12px">
+                Troque o número do WhatsApp no código para o seu.
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div>
+            © <span id="year"></span> NexaCode • Todos os direitos reservados
+          </div>
+          <div>
+            <a href="#home">Voltar ao topo</a> •
+            <a href="#orcamento">Orçamento</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ===== Mobile menu =====
+      const burger = document.getElementById("burger");
+      const drawer = document.getElementById("drawer");
+
+      burger?.addEventListener("click", () => {
+        drawer.classList.toggle("open");
+        const isOpen = drawer.classList.contains("open");
+        burger.setAttribute(
+          "aria-label",
+          isOpen ? "Fechar menu" : "Abrir menu"
+        );
+      });
+
+      // Fecha menu ao clicar em um link (mobile)
+      drawer?.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", () => drawer.classList.remove("open"));
+      });
+
+      // ===== Orçamento: envio simulado + WhatsApp =====
+      const WHATSAPP_NUMBER = "5599999999999"; // TROQUE AQUI (com DDI +55)
+      const form = document.getElementById("quoteForm");
+      const sendWhats = document.getElementById("sendWhats");
+
+      function getFormData() {
+        const fd = new FormData(form);
+        return {
+          name: (fd.get("name") || "").toString().trim(),
+          company: (fd.get("company") || "").toString().trim(),
+          whats: (fd.get("whats") || "").toString().trim(),
+          email: (fd.get("email") || "").toString().trim(),
+          service: (fd.get("service") || "").toString().trim(),
+          details: (fd.get("details") || "").toString().trim(),
+        };
+      }
+
+      function buildWhatsMessage(data) {
+        const lines = [
+          "Olá! Quero solicitar um orçamento com a NexaCode.",
+          "",
+          `Nome: ${data.name}`,
+          data.company
+            ? `Empresa: ${data.company}`
+            : "Empresa: (não informado)",
+          `WhatsApp: ${data.whats}`,
+          `E-mail: ${data.email}`,
+          `Serviço: ${data.service}`,
+          "",
+          "Descrição do projeto:",
+          data.details,
+        ];
+        return lines.join("\n");
+      }
+
+      sendWhats?.addEventListener("click", () => {
+        const data = getFormData();
+
+        // validação simples
+        if (
+          !data.name ||
+          !data.whats ||
+          !data.email ||
+          !data.service ||
+          !data.details
+        ) {
+          alert(
+            "Preencha Nome, WhatsApp, E-mail, Serviço e Descrição para enviar no WhatsApp."
+          );
+          return;
+        }
+
+        const msg = encodeURIComponent(buildWhatsMessage(data));
+        window.open(
+          `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,
+          "_blank",
+          "noopener"
+        );
+      });
+
+      form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = getFormData();
+
+        // Aqui você trocaria por integração real (API / e-mail / backend).
+        // Por enquanto, simulamos "enviado" e oferecemos WhatsApp.
+        alert(
+          "Orçamento enviado! (Simulação)\n\nDica: use o botão 'Enviar no WhatsApp' para finalizar no atendimento."
+        );
+
+        // opcional: limpar formulário
+        // form.reset();
+      });
+
+      // Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
